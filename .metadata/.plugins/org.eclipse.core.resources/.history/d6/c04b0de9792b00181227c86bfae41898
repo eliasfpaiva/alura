@@ -1,0 +1,32 @@
+package br.com.alura.cursos;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class TestaMapas {
+
+	public static void main(String[] args) {
+		
+		Curso curso = new Curso("Curso de mapas", "Paulo Silveira");
+		System.out.println(curso);
+		
+		curso.matricula(new Aluno("Leonardo Cordeiro", 21));
+		curso.matricula(new Aluno(27, "Fabio Pimentel"));
+		curso.matricula(new Aluno(19, "Silvio Mattos"));
+		curso.matricula(new Aluno("Romulo Henrique", 23));
+
+		for (Aluno aluno : curso.getAlunos()) {
+			System.out.println(curso.buscaMatriculado(aluno.getMatricula()));
+		}
+		
+//        
+//		for (Integer key : pessoas.keySet()) {
+//			System.out.println(pessoas.get(key));
+//		}
+//        
+//        pessoas.keySet().forEach(idade -> {
+//            System.out.println(pessoas.get(idade));
+//        });
+
+	}
+}

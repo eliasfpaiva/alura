@@ -1,0 +1,9 @@
+package br.com.alura;
+
+import java.util.List;
+
+public class Curso {
+
+	private List<Aula> aulas = new List<Aula>();
+			
+}
