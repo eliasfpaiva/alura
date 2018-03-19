@@ -18,7 +18,6 @@
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="br.com.alura.java2.modelos.ContaPoupanca"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="com.sun.javafx.collections.MappingChange.Map"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -37,12 +36,9 @@
 <fullyQualifiedTypeName name="br.com.alura.Aula"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="br.com.alura.Aluno"/>
@@ -50,7 +46,12 @@
 <fullyQualifiedTypeName name="br.com.alura.Recibo"/>
 <fullyQualifiedTypeName name="br.com.alura.cursos.OrdenaPorIdade.Funcionario"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="br.com.alura.empresa.Funcionario"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="br.com.alura.java8.Curso"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

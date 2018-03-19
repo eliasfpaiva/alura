@@ -6,29 +6,17 @@
 		<list key="textEntries">
 			<item value="1"/>
 			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
 		</list>
 		<list key="orderedElements">
 			<item value="org.eclipse.jdt.ui.edit.text.java.create.getter.setter"/>
-			<item value="org.eclipse.jdt.ui.edit.text.java.generate.constructor.using.fields"/>
-			<item value="org.eclipse.jdt.ui.edit.text.java.generate.hashcode.equals"/>
-			<item value="org.eclipse.jdt.ui.edit.text.java.add.unimplemented.constructors"/>
 			<item value="org.eclipse.jdt.ui.JavadocView"/>
 		</list>
 		<list key="orderedProviders">
-			<item value="org.eclipse.ui.commands"/>
-			<item value="org.eclipse.ui.commands"/>
-			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
 			<item value="gett"/>
-			<item value="constru"/>
-			<item value="equal"/>
-			<item value="gcf"/>
 			<item value="doc"/>
 		</list>
 	</section>
