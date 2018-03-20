@@ -18,5 +18,8 @@ public class Curso {
 		return this.alunos;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Curso: " + nome + " Alunos: " + alunos;
+	}
 }
