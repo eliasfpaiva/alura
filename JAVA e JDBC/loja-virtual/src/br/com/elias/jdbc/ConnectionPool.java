@@ -19,7 +19,7 @@ public class ConnectionPool {
 		this.dataSource = pool;
 	}
 
-	Connection getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException {
 //		return DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/loja-virtual", "SA", "");
 		return this.dataSource.getConnection();
 	}

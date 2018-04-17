@@ -1,10 +1,12 @@
-package br.com.elias.jdbc;
+package br.com.elias.testes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import br.com.elias.jdbc.ConnectionPool;
 
 public class TestaInsercao {
 
@@ -15,8 +17,8 @@ public class TestaInsercao {
 			connection.setAutoCommit(false);
 
 			try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
-				adiciona("TV LCD", "32 polegadas", statement);
-				adiciona("Blueray", "Full HDMI", statement);
+				adiciona("Bazuca", "Míssel 150g", statement);
+				adiciona("Granada", "Fragmentação", statement);
 				connection.commit();
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -30,10 +32,6 @@ public class TestaInsercao {
 	public static void adiciona(String nome, String descricao, PreparedStatement statement) throws SQLException {
 		statement.setString(1, nome);
 		statement.setString(2, descricao);
-		
-//		if (nome.equals("Blueray")) {
-//            throw new IllegalArgumentException("Deu muito ruim de mais");
-//        }
 		
 		statement.execute();
 		

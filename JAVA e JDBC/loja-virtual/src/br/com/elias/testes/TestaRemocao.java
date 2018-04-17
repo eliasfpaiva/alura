@@ -1,8 +1,10 @@
-package br.com.elias.jdbc;
+package br.com.elias.testes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import br.com.elias.jdbc.ConnectionPool;
 
 public class TestaRemocao {
 
@@ -13,7 +15,7 @@ public class TestaRemocao {
 			String sql = "delete from produto where id > ?";
 			
 			try (PreparedStatement statement = connection.prepareStatement(sql)){
-				statement.setInt(1, 90);
+				statement.setInt(1, 10);
 				statement.execute();
 				System.out.println(statement.getUpdateCount() + " linhas atualizadas");
 				connection.commit();
