@@ -1,6 +1,5 @@
 package br.com.pilha.testes;
-import br.com.pilha.modelo.Conta;
-import br.com.pilha.modelo.MinhaExcecao;
+import br.com.pilha.modelo.*;
 
 public class TestaContaComExcecaoChecked {
 
