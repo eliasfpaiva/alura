@@ -3,7 +3,7 @@ import br.com.bytebankconta.banco.modelo.Conta;
 import br.com.bytebankconta.banco.modelo.ContaCorrente;
 import br.com.bytebankconta.banco.modelo.SaldoInsuficienteException;
 
-public class TesteSaca {
+public class TesteSaca{
 
 	public static void main(String[] args) {
 		Conta conta = new ContaCorrente(123, 321);

@@ -1,3 +1,8 @@
+
+https://cursos.alura.com.br/course/threads-java-2
+https://cursos.alura.com.br/course/expressoes-regulares
+https://cursos.alura.com.br/course/maven-build-do-zero-a-web
+
 https://cursos.alura.com.br/career/avancando-plataforma-java
 https://cursos.alura.com.br/career/desenvolvedor-java-web-enterprise
 https://cursos.alura.com.br/career/desenvolvedor-java-web-spring
