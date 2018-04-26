@@ -1,4 +1,4 @@
-package threads;
+package br.com.elias.threads;
 
 import java.util.List;
 

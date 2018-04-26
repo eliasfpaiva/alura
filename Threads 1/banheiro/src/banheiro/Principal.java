@@ -11,8 +11,9 @@ public class Principal {
 		Thread limpa1 = new Thread(new Tarefalimpar(banheiro),"Limpa 1");
 		Thread Convidado4 = new Thread(new Tarefa2(banheiro),"Caca");
 		Thread Convidado5 = new Thread(new Tarefa1(banheiro),"jão");
-		
+
 		limpa1.setDaemon(true);
+		limpa1.setPriority(Thread.MAX_PRIORITY);
 		limpa1.start();
 		
 		Convidado1 .start();

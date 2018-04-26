@@ -1,5 +1,4 @@
 
-https://cursos.alura.com.br/course/threads-java-2
 https://cursos.alura.com.br/course/expressoes-regulares
 https://cursos.alura.com.br/course/maven-build-do-zero-a-web
 
