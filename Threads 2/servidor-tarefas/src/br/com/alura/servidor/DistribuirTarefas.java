@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.Future;
 
 public class DistribuirTarefas implements Runnable {
 
@@ -40,8 +40,14 @@ public class DistribuirTarefas implements Runnable {
 	                }
 	                case "c2": {
 	                	saida.println("Confirmação do comando c2");
-	                	ComandoC2 c2 = new ComandoC2(saida);
-						this.threadsPool.execute(c2);
+	                	ComandoC2WS c2ws = new ComandoC2WS(saida);
+	                	ComandoC2BD c2bd = new ComandoC2BD(saida);
+	                	
+	                	Future<String> futureWS = this.threadsPool.submit(c2ws);
+	                	Future<String> futureBD = this.threadsPool.submit(c2bd);
+	                	
+	                	this.threadsPool.submit(new JuntaSaidas(futureWS, futureBD, saida));
+	                	
 	                    break;
 	                }
 	                case "fim": {

@@ -13,13 +13,12 @@ public class ComandoC2 implements Runnable {
 	@Override
 	public void run() {
 		System.out.println("Executando comando c2");
-
+		
 		try {
-			Thread.sleep(20000);			
+			Thread.sleep(5000);			
 		} catch (InterruptedException e) {
             throw new RuntimeException(e);
 		}
 		saida.println("Comando c2 executado com sucesso!");
 	}
-
 }

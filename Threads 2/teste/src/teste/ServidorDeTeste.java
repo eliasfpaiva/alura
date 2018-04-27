@@ -4,42 +4,55 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServidorDeTeste {
 
-    private AtomicBoolean estaRodando = new AtomicBoolean(false);
+	private AtomicBoolean estaRodando = new AtomicBoolean(false);
 
-    public static void main(String[] args) throws InterruptedException {
-        ServidorDeTeste servidor = new ServidorDeTeste();
-        servidor.rodar();
-        servidor.alterandoAtributo();
-    }
+	public static void main(String[] args) throws InterruptedException {
+		ServidorDeTeste servidor = new ServidorDeTeste();
+		servidor.rodar();
+		servidor.alterandoAtributo();
+	}
 
-    private void rodar() {
-        new Thread(new Runnable() {
+	private void rodar() {
+		Thread thread = new Thread(new Runnable() {
 
-            public void run() {
-                System.out.println("Servidor começando, estaRodando = " + estaRodando );
+			public void run() {
+				System.out.println("Servidor começando, estaRodando = " + estaRodando);
 
-                while(!estaRodando.get()) {}
+				while (!estaRodando.get()) {
+				}
 
-                System.out.println("Servidor rodando, estaRodando = " + estaRodando );
+				if (estaRodando.get())
+					throw new RuntimeException("Deus erro na thread");
 
-                while(estaRodando.get()) {}
+				System.out.println("Servidor rodando, estaRodando = " + estaRodando);
 
-                System.out.println("Servidor terminando, estaRodando = " + estaRodando );
-            }
-        }).start();
-    }
+				while (estaRodando.get()) {
+				}
 
-    private synchronized void ligar() { this.estaRodando.set(true); }
-    
-    private synchronized void desligar() { this.estaRodando.set(false); }
-    
-    private void alterandoAtributo() throws InterruptedException {
-        Thread.sleep(5000);
-        System.out.println("Main alterando estaRodando = true");
-        this.ligar();
+				System.out.println("Servidor terminando, estaRodando = " + estaRodando);
+			}
+		});
+		
+		thread.setUncaughtExceptionHandler(new TratadorExcecao());
+		
+		thread.start();
+	}
 
-        Thread.sleep(5000);
-        System.out.println("Main alterando estaRodando = false");
-        this.desligar();        
-    }
+	private synchronized void ligar() {
+		this.estaRodando.set(true);
+	}
+
+	private synchronized void desligar() {
+		this.estaRodando.set(false);
+	}
+
+	private void alterandoAtributo() throws InterruptedException {
+		Thread.sleep(5000);
+		System.out.println("Main alterando estaRodando = true");
+		this.ligar();
+
+		Thread.sleep(5000);
+		System.out.println("Main alterando estaRodando = false");
+		this.desligar();
+	}
 }
