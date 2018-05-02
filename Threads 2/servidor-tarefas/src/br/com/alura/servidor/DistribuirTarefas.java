@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -12,11 +13,13 @@ public class DistribuirTarefas implements Runnable {
 	private Socket socket;
 	private ServidorTarefas servidorTarefas;
 	private ExecutorService threadsPool;
+	private BlockingQueue<String> filaComandos;
 
-	public DistribuirTarefas(Socket socket, ServidorTarefas servidorTarefas, ExecutorService threadsPool) { 
+	public DistribuirTarefas(Socket socket, ServidorTarefas servidorTarefas, ExecutorService threadsPool, BlockingQueue<String> filaComandos) { 
 		this.socket = socket;
 		this.servidorTarefas = servidorTarefas;
 		this.threadsPool = threadsPool;
+		this.filaComandos = filaComandos;
 	}
 
 	@Override
@@ -50,6 +53,12 @@ public class DistribuirTarefas implements Runnable {
 	                	
 	                    break;
 	                }
+	                case "c3": {
+	                	this.filaComandos.put(comando);
+	                	System.out.println("Comando c3 adicionado na fila");
+	                	saida.println("Comando c3 adicionado na fila");
+	                	break;
+	                }
 	                case "fim": {
 	                	saida.print("fim");
 	                	this.servidorTarefas.parar();
@@ -62,7 +71,7 @@ public class DistribuirTarefas implements Runnable {
 				System.out.println(comando);
 			}
 			saida.close();
-		} catch (IOException e) {
+		} catch (InterruptedException | IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException();
 		}
