@@ -1,13 +1,9 @@
 
-https://cursos.alura.com.br/course/eclipse
 https://cursos.alura.com.br/course/tdd
 https://cursos.alura.com.br/career/avancando-plataforma-java
-https://cursos.alura.com.br/career/desenvolvedor-java-web-enterprise
 https://cursos.alura.com.br/career/desenvolvedor-java-web-spring
+https://cursos.alura.com.br/career/desenvolvedor-java-web-enterprise
 https://cursos.alura.com.br/career/expert-orientacao-a-objetos
 https://cursos.alura.com.br/career/expert-em-integracoes-de-aplicacoes-com-java
 https://cursos.alura.com.br/career/certificacao-java
-
-Spring MVC
-VRaptor
 https://cursos.alura.com.br/course/ivy
