@@ -6,7 +6,8 @@ public class Funcionario {
 	private String nome;
 	private int matricula;
 	private Calendar dataNascimento;
-
+	
+	
 	public Funcionario(String nome, int matricula, Calendar dataNascimento) {
 		this.nome = nome;
 		this.matricula = matricula;

@@ -12,7 +12,7 @@ public class TestaGasto {
 		Calendar hoje = Calendar.getInstance();
         GregorianCalendar nascimento = new GregorianCalendar(1989, 3, 14);
         Funcionario funcionario = new Funcionario("Vinícius", 9, nascimento);
-
+        
         Gasto gasto = new Gasto(40.0, "taxi", funcionario, hoje);
         Gasto gasto1 = new Gasto(40.0, "taxi", funcionario, hoje);
         Gasto gasto2 = new Gasto(40.0, "taxi", funcionario, hoje);
