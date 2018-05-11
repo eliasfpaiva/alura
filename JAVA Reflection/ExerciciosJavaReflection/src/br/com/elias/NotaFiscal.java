@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class NotaFiscal {
 
-	private int    talao;
-	private int    sequencia;
-	private String cnpj;
-	private String endereco;
-	private Date   data;
+	int    talao;
+	int    sequencia;
+	String cnpj;
+	String endereco;
+	Date   data;
 
 	public NotaFiscal(int talao, int sequencia, String cnpj, String endereco, Date data) {
 		super();

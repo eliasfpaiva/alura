@@ -2,11 +2,11 @@ package br.com.elias;
 
 public class Produto {
 
-	private int    codigo;
-	private String nome;
-	private String fornecedor;
-	private String descricao;
-	private double preco;
+	public int    codigo;
+	public String nome;
+	public String fornecedor;
+	public String descricao;
+	public double preco;
 
 	public Produto(int codigo, String nome, String fornecedor, String descricao, double preco) {
 		super();

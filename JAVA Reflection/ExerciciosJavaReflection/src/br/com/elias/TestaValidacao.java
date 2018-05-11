@@ -22,30 +22,24 @@ public class TestaValidacao {
 		}
 	}
 
-	@SuppressWarnings("null")
 	public static List<String> buscaString(Object o, String buscada) {
 		try {
 			List<String> lista = new ArrayList<>();
-			Class<?> classe = o.getClass();
-
-			System.out.println("fora");
-			for (Field atributo : classe.getFields()) {
-				Object value = atributo.get(o);
-				System.out.println("teste");
-				if(value==null) {
-					//					String palavra = value.toString();
-					//					if(palavra.contains(buscada)) {
-					//						lista.add(atributo.getName());
-					System.out.println("null");
+			Class<?> c = o.getClass();
+			for (Field f : c.getFields()) {
+				Object value = f.get(o);
+				if (value != null) {
+					String strValue = value.toString();
+					if (strValue.contains(buscada)) {
+						lista.add(f.getName());
+					}
 				}
 			}
-
 			return lista;
-		}catch(
-
-				Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-	}}
+
+	}
+}

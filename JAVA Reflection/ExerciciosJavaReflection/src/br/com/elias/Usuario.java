@@ -2,11 +2,11 @@ package br.com.elias;
 
 public class Usuario {
 
-	private String  login;
-	private String  senha;
-	private String  email;
-	private String  papel;
-	private boolean ativo;
+	String  login;
+	String  senha;
+	String  email;
+	String  papel;
+	boolean ativo;
 
 	public Usuario(String login, String senha, String email, String papel, boolean ativo) {
 		super();
