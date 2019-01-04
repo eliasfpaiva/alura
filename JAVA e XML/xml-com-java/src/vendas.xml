@@ -14,5 +14,9 @@
 			<nome>Livro de Java</nome>
 			<preco>29.90</preco>
 		</produto>
+		<produto>
+			<nome>Curso confuso</nome>
+			<preco>0.90</preco>
+		</produto>
 	</produtos>
 </venda>
