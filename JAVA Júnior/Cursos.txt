@@ -1,7 +1,0 @@
-https://cursos.alura.com.br/course/threads-java-1
-https://cursos.alura.com.br/course/threads-java-2
-https://cursos.alura.com.br/course/java8-lambdas
-https://cursos.alura.com.br/course/orientacao-objetos-java
-https://cursos.alura.com.br/course/orientacao-a-objetos-avancada-e-principios-solid
-https://cursos.alura.com.br/course/design-patterns-2
-https://cursos.alura.com.br/course/reflection-em-java
