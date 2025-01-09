@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Esquadro</title>
+	<meta charset="utf-8">
+</head>
+	<body>
+		
+		<canvas id="tela" width="200" height="140"></canvas>
+		
+		<script type="text/javascript">
+
+			var tela = document.querySelector('#tela');
+			var pincel = tela.getContext('2d');
+
+			pincel.fillStyle = 'green';
+			pincel.fillRect(0,0,200,140);
+
+			pincel.fillStyle = 'yellow';
+			pincel.beginPath();
+			pincel.moveTo(100,17);
+			pincel.lineTo(183,70);
+			pincel.lineTo(100,123);
+			pincel.lineTo(17,70);
+			pincel.fill();
+
+			pincel.fillStyle = 'darkblue';
+			pincel.beginPath();
+			pincel.arc(100, 70, 35, 0, 2*3.14);
+			pincel.fill();
+
+		</script>
+	</body>
+</html>

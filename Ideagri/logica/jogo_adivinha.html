@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jogo adivinha</title>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write("Infelizmente");
+
+		function teste(num, chute){
+			if (chute == num) {
+				document.write("Parabéns você acertou!");
+			}else{
+				document.write("Infelizmente, você errou!<br>O número pensado foi " + num);
+			}
+		}
+		var num = Math.round(Math.random()*100), chute = parseInt(prompt("Chute um número de 0 a 100: "));
+		teste(num, chute);
+	</script>
+</body>
+</html>
