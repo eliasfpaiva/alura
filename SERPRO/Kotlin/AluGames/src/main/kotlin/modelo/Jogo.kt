@@ -1,6 +1,6 @@
 package modelo
 
-class Jogo(val titulo: String, val capa: String) {
+data class Jogo(val titulo: String, val capa: String) {
     var descricao: String? = ""
 
     override fun toString(): String {

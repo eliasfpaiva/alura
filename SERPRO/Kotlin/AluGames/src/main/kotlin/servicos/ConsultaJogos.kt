@@ -25,7 +25,7 @@ class ConsultaJogos{
 
         resultado.onSuccess {
             println("O Jogo é: ${meuJogo?.titulo}")
-            println("Deseja inserir uma descrição personalizada? S/N")
+            println("Se desejar inserir uma descrição personalizada digite 's': ")
             val opcao = leitura.nextLine()
             if (opcao.equals("s", true)) {
                 println("Insira a descrição personalizado para o jogo:")
@@ -33,9 +33,7 @@ class ConsultaJogos{
                 meuJogo?.descricao = descricaoPersonalizada
             } else {
                 meuJogo?.descricao = meuJogo?.titulo
-
             }
-
             println(meuJogo)
         }
 
