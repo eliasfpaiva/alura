@@ -1,4 +1,4 @@
-package modelo
+package modelo.jogo
 
 data class Jogo(val titulo: String, val capa: String) {
     var descricao: String? = ""

@@ -1,7 +1,7 @@
 package servicos
 
 import com.google.gson.Gson
-import modelo.InfoJogo
+import modelo.jogo.InfoJogo
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest

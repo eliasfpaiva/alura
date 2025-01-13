@@ -1,6 +1,6 @@
 package servicos
 
-import modelo.Jogo
+import modelo.jogo.Jogo
 import java.util.*
 
 class ConsultaJogos{
