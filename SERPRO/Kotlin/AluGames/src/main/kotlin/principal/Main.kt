@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import modelo.gamer.Gamer
 import servicos.ConsultaJogos
 import java.util.*
-import kotlin.jvm.internal.Intrinsics
 
 fun main(){
 
