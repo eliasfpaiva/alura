@@ -2,6 +2,7 @@ package modelo.gamer
 
 import Utils.solicitarOpcaoInt
 import Utils.solicitarOpcaoString
+import Utils.transformarEmIdade
 import Utils.validarEmail
 import com.google.gson.Gson
 import modelo.jogo.Jogo
@@ -24,12 +25,20 @@ data class Gamer(var nome:String, var email:String){
         this.dataNascimento = dataNascimento
         this.usuario = usuario
         criarIdInterno()
+        verificacaoIdade()
     }
     
     init {
         this.email = validarEmail(this.email)
         validarNome(this.nome)
     }
+
+    private fun verificacaoIdade() {
+        if(ehMenorDeIdade())
+            println("Você é menor de idade, sendo assim haverá restrições no catálogo de jogos")
+    }
+
+    private fun ehMenorDeIdade() = dataNascimento != null && dataNascimento?.transformarEmIdade()!! < 18
 
     private fun validarNome(nome: String?) {
         if (nome.isNullOrBlank()) {
