@@ -1,8 +1,11 @@
 package modelo.gamer
 
-import Utils.ValidarEmail
+import Utils.solicitarOpcaoInt
+import Utils.solicitarOpcaoString
+import Utils.validarEmail
 import com.google.gson.Gson
 import modelo.jogo.Jogo
+import servicos.ConsultaJogos
 import java.util.*
 import kotlin.random.Random
 
@@ -24,7 +27,7 @@ data class Gamer(var nome:String, var email:String){
     }
     
     init {
-        this.email = ValidarEmail(this.email)
+        this.email = validarEmail(this.email)
         validarNome(this.nome)
     }
 
@@ -42,6 +45,37 @@ data class Gamer(var nome:String, var email:String){
     override fun toString(): String {
         return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)," +
                 "jogosBuscados=${Gson().toJson(jogosBuscados)})"
+    }
+
+    fun removerGame(leitura: Scanner){
+        do {
+            if(jogosBuscados.isEmpty()) return
+            listarGames()
+            val opcao = solicitarOpcaoString(leitura,"\nSe desejar remover algum jogo da lista digite 's':")
+            val desejaRemover = opcao.equals("s", true)
+            if (desejaRemover) {
+                val indice = solicitarOpcaoInt(leitura,"Informe a posição do jogo que deseja excluir: ")
+                if(indice >= 0 && indice < jogosBuscados.size && jogosBuscados.get(indice) != null)
+                    jogosBuscados.removeAt(indice)
+                else println("Posição invalida!")
+            }
+
+        }while (desejaRemover)
+    }
+
+    fun listarGames() {
+        jogosBuscados.sortBy{ it?.titulo }
+        println("\n")
+        jogosBuscados.forEach{ println("${jogosBuscados.indexOf(it)} - ${it?.titulo}")}
+    }
+
+    fun incluirGame(scanner: Scanner) {
+        do {
+            listarGames()
+            ConsultaJogos.consultaPorId(scanner)
+                .let { if(it?.titulo?.isNotBlank() == true) jogosBuscados.add(it) }
+            print("Se desejar realizar uma nova consulta digite 's': ")
+        }while (scanner.nextLine().equals("s", true))
     }
 
     companion object {

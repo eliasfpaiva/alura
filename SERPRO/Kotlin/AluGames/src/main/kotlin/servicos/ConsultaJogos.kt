@@ -5,10 +5,7 @@ import java.util.*
 
 class ConsultaJogos{
     companion object {
-        fun consultaPorId(): Jogo? {
-            print("Informe o id do jogo desejado: ")
-            val leitura = Scanner(System.`in`)
-            val id = leitura.nextLine()
+        fun consultaPorId(leitura:Scanner, id:String = solicitarId(leitura)): Jogo? {
 
             var meuJogo: Jogo? = null
 
@@ -38,6 +35,11 @@ class ConsultaJogos{
                 println(meuJogo)
             }
             return meuJogo
+        }
+
+        private fun solicitarId(leitura:Scanner): String {
+            print("Informe o id do jogo desejado: ")
+            return leitura.nextLine()
         }
     }
 }
