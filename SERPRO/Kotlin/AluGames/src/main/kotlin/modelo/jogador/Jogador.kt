@@ -1,4 +1,4 @@
-package modelo.gamer
+package modelo.jogador
 
 import Utils.solicitarOpcaoInt
 import Utils.solicitarOpcaoString
@@ -10,7 +10,7 @@ import servicos.ConsultaJogos
 import java.util.*
 import kotlin.random.Random
 
-data class Gamer(var nome:String, var email:String){
+data class Jogador(var nome:String, var email:String){
     var dataNascimento:String? = null
     var usuario:String? = null
         set(value) {
@@ -88,7 +88,7 @@ data class Gamer(var nome:String, var email:String){
     }
 
     companion object {
-        fun cadastrarGamer(leitura: Scanner): Gamer {
+        fun cadastrarGamer(leitura: Scanner): Jogador {
             println("Seja bem-vindo(a) ao AluGames! Vamos fazer seu cadastro. Digite seu nome:")
             val nome = leitura.nextLine()
             println("Digite seu e-mail:")
@@ -102,9 +102,9 @@ data class Gamer(var nome:String, var email:String){
                 println("Digite seu nome de usuário:")
                 val usuario = leitura.nextLine()
 
-                return Gamer(nome, email, nascimento, usuario)
+                return Jogador(nome, email, nascimento, usuario)
             } else {
-                return Gamer (nome, email)
+                return Jogador (nome, email)
             }
 
         }
