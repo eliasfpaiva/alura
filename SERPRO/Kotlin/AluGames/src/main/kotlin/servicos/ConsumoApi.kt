@@ -4,8 +4,8 @@ import Utils.toJogador
 import Utils.toJogo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import modelo.jogador.Jogador
 import modelo.jogador.InfoJogadorJson
+import modelo.jogador.Jogador
 import modelo.jogo.InfoJogo
 import modelo.jogo.InfoJogoJson
 import modelo.jogo.Jogo
