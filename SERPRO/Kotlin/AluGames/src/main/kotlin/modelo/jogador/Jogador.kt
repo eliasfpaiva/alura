@@ -5,6 +5,7 @@ import Utils.solicitarOpcaoString
 import Utils.transformarEmIdade
 import Utils.validarEmail
 import com.google.gson.Gson
+import modelo.Recomendavel
 import modelo.aluguel.Aluguel
 import modelo.aluguel.Periodo
 import modelo.jogo.Jogo
@@ -15,7 +16,7 @@ import java.time.LocalDate
 import java.util.*
 import kotlin.random.Random
 
-data class Jogador(var nome:String, var email:String){
+data class Jogador(var nome:String, var email:String) : Recomendavel{
     var dataNascimento:String? = null
     var usuario:String? = null
         set(value) {
@@ -26,7 +27,12 @@ data class Jogador(var nome:String, var email:String){
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
+    private val notas = mutableListOf<Int>()
     var plano: Plano = PlanoPadrao()
+    override val mediaRecomendacao: Double
+        get() = notas.average()
+
+    override fun recomendar(nota: Int) { notas.add(nota) }
 
     constructor(nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email){
         this.dataNascimento = dataNascimento
@@ -67,8 +73,13 @@ data class Jogador(var nome:String, var email:String){
     fun jogosAlugadosNoMes(data: LocalDate): List<Aluguel> { return jogosAlugadosNoMes(data.monthValue, data.year) }
 
     override fun toString(): String {
-        return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)," +
-                "jogosBuscados=${Gson().toJson(jogosBuscados)})"
+        return "Jogador:\n" +
+                "Nome: $nome\n" +
+                "Email: $email\n" +
+                "Data Nascimento: $dataNascimento\n" +
+                "Usuario: $usuario\n" +
+                "IdInterno: $idInterno\n" +
+                "Reputação: $mediaRecomendacao"
     }
 
     fun removerJogo(leitura: Scanner){
