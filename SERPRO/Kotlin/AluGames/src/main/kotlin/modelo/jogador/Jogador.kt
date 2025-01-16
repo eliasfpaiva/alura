@@ -8,7 +8,10 @@ import com.google.gson.Gson
 import modelo.aluguel.Aluguel
 import modelo.aluguel.Periodo
 import modelo.jogo.Jogo
+import modelo.plano.Plano
+import modelo.plano.PlanoPadrao
 import servicos.ConsultaJogos
+import java.time.LocalDate
 import java.util.*
 import kotlin.random.Random
 
@@ -23,6 +26,7 @@ data class Jogador(var nome:String, var email:String){
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
+    var plano: Plano = PlanoPadrao()
 
     constructor(nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email){
         this.dataNascimento = dataNascimento
@@ -60,12 +64,14 @@ data class Jogador(var nome:String, var email:String){
 
     fun jogosAlugadosNoMes(mes: Int, ano: Int): List<Aluguel> { return jogosAlugados .filter { it -> it.ehNoMes(mes, ano) } }
 
+    fun jogosAlugadosNoMes(data: LocalDate): List<Aluguel> { return jogosAlugadosNoMes(data.monthValue, data.year) }
+
     override fun toString(): String {
         return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)," +
                 "jogosBuscados=${Gson().toJson(jogosBuscados)})"
     }
 
-    fun removerGame(leitura: Scanner){
+    fun removerJogo(leitura: Scanner){
         do {
             if(jogosBuscados.isEmpty()) return
             listarGames()
@@ -87,7 +93,7 @@ data class Jogador(var nome:String, var email:String){
         jogosBuscados.forEach{ println("${jogosBuscados.indexOf(it)} - ${it?.titulo}")}
     }
 
-    fun incluirGame(scanner: Scanner) {
+    fun incluirJogo(scanner: Scanner) {
         do {
             listarGames()
             ConsultaJogos.consultaPorId(scanner)
