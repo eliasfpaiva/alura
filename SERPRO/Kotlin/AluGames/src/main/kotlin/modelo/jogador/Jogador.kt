@@ -30,7 +30,7 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
     private val notas = mutableListOf<Int>()
     var plano: Plano = PlanoPadrao()
     override val mediaRecomendacao: Double
-        get() = notas.average()
+        get() = if (notas.isEmpty()) 0.0 else notas.average()
 
     override fun recomendar(nota: Int) { notas.add(nota) }
 
