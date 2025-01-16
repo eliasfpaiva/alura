@@ -26,6 +26,7 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
     var idInterno:String? = null
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
+    val jogosRecomendados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
     override val notas: MutableList<Int> = mutableListOf()
     var plano: Plano = PlanoPadrao()
@@ -64,6 +65,11 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
 
     fun alugarJogo(jogo: Jogo, periodo: Periodo) {
         jogosAlugados.add(Aluguel(this, jogo, periodo))
+    }
+
+    fun recomendarJogo(jogo: Jogo, nota: Int) {
+        jogo.recomendar(nota)
+        jogosRecomendados.add(jogo);
     }
 
     fun jogosAlugadosNoMes(mes: Int, ano: Int): List<Aluguel> { return jogosAlugados .filter { it -> it.ehNoMes(mes, ano) } }
