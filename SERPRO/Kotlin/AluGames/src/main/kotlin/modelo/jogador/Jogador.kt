@@ -1,9 +1,6 @@
 package modelo.jogador
 
-import Utils.solicitarOpcaoInt
-import Utils.solicitarOpcaoString
-import Utils.transformarEmIdade
-import Utils.validarEmail
+import Utils.*
 import com.google.gson.Gson
 import modelo.Recomendavel
 import modelo.aluguel.Aluguel
@@ -69,7 +66,7 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
 
     fun recomendarJogo(jogo: Jogo, nota: Int) {
         jogo.recomendar(nota)
-        jogosRecomendados.add(jogo);
+        jogosRecomendados.add(jogo)
     }
 
     fun jogosAlugadosNoMes(mes: Int, ano: Int): List<Aluguel> { return jogosAlugados .filter { it -> it.ehNoMes(mes, ano) } }
@@ -83,7 +80,7 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
                 "Data Nascimento: $dataNascimento\n" +
                 "Usuario: $usuario\n" +
                 "IdInterno: $idInterno\n" +
-                "Reputação: $mediaRecomendacao"
+                "Reputação: ${mediaRecomendacao.numeroCasasDecimais(2)}"
     }
 
     fun removerJogo(leitura: Scanner){

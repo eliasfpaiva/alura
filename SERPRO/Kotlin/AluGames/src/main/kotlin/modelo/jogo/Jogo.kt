@@ -1,8 +1,10 @@
 package modelo.jogo
 
+import Utils.numeroCasasDecimais
+import com.google.gson.annotations.Expose
 import modelo.Recomendavel
 
-data class Jogo(val titulo: String, val capa: String): Recomendavel {
+data class Jogo(@Expose val titulo: String, @Expose val capa: String): Recomendavel {
     var descricao: String? = null
     var preco = 0.0
     override val notas: MutableList<Int> = mutableListOf()
@@ -20,6 +22,6 @@ data class Jogo(val titulo: String, val capa: String): Recomendavel {
                 "Capa: $capa\n" +
                 "Descricao: $descricao\n" +
                 "Preço: $preco\n" +
-                "Reputação: $mediaRecomendacao"
+                "Reputação: ${mediaRecomendacao.numeroCasasDecimais(2)}"
     }
 }
