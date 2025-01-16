@@ -27,12 +27,10 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
-    private val notas = mutableListOf<Int>()
+    override val notas: MutableList<Int> = mutableListOf()
     var plano: Plano = PlanoPadrao()
     override val mediaRecomendacao: Double
         get() = if (notas.isEmpty()) 0.0 else notas.average()
-
-    override fun recomendar(nota: Int) { notas.add(nota) }
 
     constructor(nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email){
         this.dataNascimento = dataNascimento
