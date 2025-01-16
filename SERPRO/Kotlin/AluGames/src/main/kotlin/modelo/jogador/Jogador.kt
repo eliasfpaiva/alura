@@ -5,6 +5,8 @@ import Utils.solicitarOpcaoString
 import Utils.transformarEmIdade
 import Utils.validarEmail
 import com.google.gson.Gson
+import modelo.aluguel.Aluguel
+import modelo.aluguel.Periodo
 import modelo.jogo.Jogo
 import servicos.ConsultaJogos
 import java.util.*
@@ -20,6 +22,7 @@ data class Jogador(var nome:String, var email:String){
     var idInterno:String? = null
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
+    val jogosAlugados = mutableListOf<Aluguel>()
 
     constructor(nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email){
         this.dataNascimento = dataNascimento
@@ -50,6 +53,12 @@ data class Jogador(var nome:String, var email:String){
         val numero = Random.nextInt(10000)
         this.idInterno = String.format("$usuario%04d", numero)
     }
+
+    fun alugarJogo(jogo: Jogo, periodo: Periodo) {
+        jogosAlugados.add(Aluguel(this, jogo, periodo))
+    }
+
+    fun jogosAlugadosNoMes(mes: Int, ano: Int): List<Aluguel> { return jogosAlugados .filter { it -> it.ehNoMes(mes, ano) } }
 
     override fun toString(): String {
         return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)," +

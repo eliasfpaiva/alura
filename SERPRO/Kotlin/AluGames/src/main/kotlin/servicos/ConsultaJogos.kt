@@ -10,7 +10,7 @@ class ConsultaJogos{
             var meuJogo: Jogo? = null
 
             val resultado = runCatching {
-                val meuInfoJogo = ConsumoApi().buscarJogoByID(id)
+                val meuInfoJogo = ConsumoApi.buscarJogoByID(id)
                 meuJogo = Jogo(
                     meuInfoJogo.info.title,
                     meuInfoJogo.info.thumb
