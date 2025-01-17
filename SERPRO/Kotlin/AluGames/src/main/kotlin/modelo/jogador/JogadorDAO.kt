@@ -4,7 +4,7 @@ import dados.Banco
 import dados.DAO
 import javax.persistence.EntityManager
 
-class JogadorDAO : DAO<Jogador, JogadorEntity> {
+object JogadorDAO : DAO<Jogador, JogadorEntity> {
     override val manager: EntityManager = Banco.getEntityManager()
     override val classe = JogadorEntity::class.java
     override fun converterDeEntidade(entidade: JogadorEntity) = entidade.paraJogador()
