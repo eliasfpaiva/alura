@@ -2,20 +2,19 @@ package dados
 
 import javax.persistence.EntityManager
 
-interface DAO<T, E> {
+interface DAO<TModelo, TEntidade> {
     val manager: EntityManager
-    val classe: Class<E>
-    val nomeEntidade: String
-    fun converterDeEntidade(entidade: E): T
-    fun converterEmEntidade(objeto: T): E
+    val classe: Class<TEntidade>
+    fun converterDeEntidade(entidade: TEntidade): TModelo
+    fun converterEmEntidade(objeto: TModelo): TEntidade
 
-    fun listar(): List<T> {
+    fun listar(): List<TModelo> {
         return manager
-            .createQuery("FROM $nomeEntidade", classe)
+            .createQuery("FROM ${classe.simpleName}", classe)
             .resultList.map { converterDeEntidade(it) }
     }
 
-    fun salvar(item: T) {
+    fun salvar(item: TModelo) {
         manager.transaction.begin()
         manager.persist(converterEmEntidade(item))
         manager.transaction.commit()
