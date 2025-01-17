@@ -5,12 +5,13 @@ import javax.persistence.EntityManager
 interface DAO<T, E> {
     val manager: EntityManager
     val classe: Class<E>
+    val nomeEntity: String
     fun converterDeEntidade(entidade: E): T
     fun converterEmEntidade(objeto: T): E
 
     fun listar(): List<T> {
         return manager
-            .createQuery("FROM JogoEntity", classe)
+            .createQuery("FROM $nomeEntity", classe)
             .resultList.map { converterDeEntidade(it) }
     }
 
