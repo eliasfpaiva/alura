@@ -1,28 +1,11 @@
 package modelo.jogo
 
+import dados.Banco
 import dados.DAO
-import java.sql.PreparedStatement
-import java.sql.ResultSet
 
-class JogoDAO() : DAO<Jogo>{
-    override val tabela: String = "jogos"
-
-    override fun converterResultado(resultado: ResultSet) = Jogo(
-        resultado.getInt("id"),
-        resultado.getString("titulo"),
-        resultado.getString("capa"),
-        resultado.getBigDecimal("preco"),
-        resultado.getString("descricao")
-    )
-
-    override fun adicionar(item: Jogo) {
-        salvar(getInsert(listOf("titulo", "capa", "preco", "descricao")), item)
-    }
-
-    override fun setarParametros(statement: PreparedStatement, item: Jogo) {
-        statement.setString(1, item.titulo)
-        statement.setString(2, item.capa)
-        statement.setBigDecimal(3, item.preco)
-        statement.setString(4, item.descricao)
-    }
+class JogoDAO() : DAO<Jogo, JogoEntity>{
+    override val manager = Banco.getEntityManager()
+    override val classe = JogoEntity::class.java
+    override fun converterDeEntidade(entidade: JogoEntity) = entidade.paraJogo()
+    override fun converterEmEntidade(objeto: Jogo) = JogoEntity.doJogo(objeto)
 }
