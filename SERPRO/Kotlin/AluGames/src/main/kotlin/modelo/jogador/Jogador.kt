@@ -1,7 +1,9 @@
 package modelo.jogador
 
-import Utils.*
-import com.google.gson.Gson
+import Utils.solicitarOpcaoInt
+import Utils.solicitarOpcaoString
+import Utils.transformarEmIdade
+import Utils.validarEmail
 import modelo.Recomendavel
 import modelo.aluguel.Aluguel
 import modelo.aluguel.Periodo
@@ -9,28 +11,31 @@ import modelo.jogo.Jogo
 import modelo.plano.Plano
 import modelo.plano.PlanoPadrao
 import servicos.ConsultaJogos
+import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.*
 import kotlin.random.Random
 
 data class Jogador(var nome:String, var email:String) : Recomendavel{
-    var dataNascimento:String? = null
-    var usuario:String? = null
+    var id: Int? = 0
+    private var dataNascimento:String? = null
+    private var usuario:String? = null
         set(value) {
             field = value
             if (idInterno.isNullOrBlank()) criarIdInterno()
         }
-    var idInterno:String? = null
+    private var idInterno:String? = null
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosRecomendados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
     override val notas: MutableList<Int> = mutableListOf()
     var plano: Plano = PlanoPadrao()
-    override val mediaRecomendacao: Double
-        get() = if (notas.isEmpty()) 0.0 else notas.average()
+    override val mediaRecomendacao: BigDecimal
+        get() = if (notas.isEmpty()) BigDecimal("0.0") else (notas.sum().toBigDecimal().divide(notas.size.toBigDecimal()))
 
-    constructor(nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email){
+    constructor(id: Int?, nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email){
+        this.id = id
         this.dataNascimento = dataNascimento
         this.usuario = usuario
         criarIdInterno()
@@ -75,12 +80,13 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
 
     override fun toString(): String {
         return "Jogador:\n" +
+                "Id: $id\n" +
                 "Nome: $nome\n" +
                 "Email: $email\n" +
                 "Data Nascimento: $dataNascimento\n" +
                 "Usuario: $usuario\n" +
                 "IdInterno: $idInterno\n" +
-                "Reputação: ${mediaRecomendacao.numeroCasasDecimais(2)}"
+                "Reputação: ${mediaRecomendacao.setScale(2)}"
     }
 
     fun removerJogo(leitura: Scanner){
@@ -129,7 +135,7 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
                 println("Digite seu nome de usuário:")
                 val usuario = leitura.nextLine()
 
-                return Jogador(nome, email, nascimento, usuario)
+                return Jogador(null, nome, email, nascimento, usuario)
             } else {
                 return Jogador (nome, email)
             }

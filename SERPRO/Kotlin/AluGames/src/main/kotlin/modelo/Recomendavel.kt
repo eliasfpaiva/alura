@@ -1,8 +1,10 @@
 package modelo
 
+import java.math.BigDecimal
+
 interface Recomendavel {
     val notas: MutableList<Int>
-    val mediaRecomendacao: Double
+    val mediaRecomendacao: BigDecimal
 
     fun recomendar(nota: Int){
         if (nota < 1 || nota > 10)

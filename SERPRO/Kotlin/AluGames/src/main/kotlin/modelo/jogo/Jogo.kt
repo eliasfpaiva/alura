@@ -1,27 +1,30 @@
 package modelo.jogo
 
-import Utils.numeroCasasDecimais
 import com.google.gson.annotations.Expose
 import modelo.Recomendavel
+import java.math.BigDecimal
 
 data class Jogo(@Expose val titulo: String, @Expose val capa: String): Recomendavel {
+    var id: Int? = 0
     var descricao: String? = null
-    var preco = 0.0
+    var preco = BigDecimal("0.0")
     override val notas: MutableList<Int> = mutableListOf()
-    override val mediaRecomendacao: Double
-        get() = if (notas.isEmpty()) 0.0 else notas.average()
+    override val mediaRecomendacao: BigDecimal
+        get() = if (notas.isEmpty()) BigDecimal("0.0") else (notas.sum().toBigDecimal() / notas.size.toBigDecimal())
 
-    constructor(titulo: String, capa: String, preco: Double, descricao: String):
+    constructor(id: Int?, titulo: String, capa: String, preco: BigDecimal, descricao: String):
             this(titulo, capa) {
+        this.id = id
         this.preco = preco
         this.descricao = descricao
     }
 
     override fun toString(): String {
-        return "Título: $titulo\n" +
+        return "Id: $id\n" +
+                "Título: $titulo\n" +
                 "Capa: $capa\n" +
                 "Descricao: $descricao\n" +
                 "Preço: $preco\n" +
-                "Reputação: ${mediaRecomendacao.numeroCasasDecimais(2)}"
+                "Reputação: ${mediaRecomendacao.setScale(2)}"
     }
 }

@@ -22,3 +22,7 @@ fun solicitarOpcaoInt(leitura: Scanner, mensagem: String?): Int {
     leitura.nextLine()
     return valor
 }
+
+fun repetirString(numeroRepeticoes: Int, string: String): String {
+    return if(numeroRepeticoes == 0) "" else "$string${repetirString(numeroRepeticoes - 1, string)}"
+}

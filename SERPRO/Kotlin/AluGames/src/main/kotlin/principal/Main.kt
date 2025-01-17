@@ -1,8 +1,11 @@
 package principal
 
-import servicos.ConsumoApi
+import modelo.jogo.Jogo
+import modelo.jogo.JogoDAO
+import java.math.BigDecimal
 
 fun main(){
-    println(ConsumoApi().buscaJogadores())
-    println(ConsumoApi().buscaJogos())
+    val jogoDAO = JogoDAO()
+    jogoDAO.adicionar(Jogo(null, "teste", "teste", BigDecimal("1"), "asdf"))
+    println(jogoDAO.listar())
 }

@@ -2,11 +2,17 @@ package modelo.plano
 
 import modelo.aluguel.Aluguel
 import modelo.jogador.Jogador
+import java.math.BigDecimal
 
-sealed class Plano(val tipo: TiposPlano) {
-    open fun obterValor(aluguel: Aluguel): Double {
-        val valor = aluguel.jogo.preco * aluguel.periodo.emDias()
+sealed class Plano(val tipo: TiposPlano, var id:Int = 0) {
+
+    open fun obterValor(aluguel: Aluguel): BigDecimal {
+        val valor = aluguel.jogo.preco * aluguel.periodo.emDias().toBigDecimal()
         return valor - (valor * percentualDesconto(aluguel.jogador))
     }
-    abstract fun percentualDesconto(jogador: Jogador): Double
+    abstract fun percentualDesconto(jogador: Jogador): BigDecimal
+
+    override fun toString(): String {
+        return "Plano(tipo=$tipo, id=$id)"
+    }
 }
