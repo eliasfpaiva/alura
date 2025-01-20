@@ -15,23 +15,18 @@ interface DAO<TModelo, TEntidade> {
             .resultList.map { converterDeEntidade(it) }
     }
 
-    fun recuperarPeloId(id: Int): TModelo? {
-        val query = manager.createQuery("FROM ${classe.simpleName} WHERE id=:id", classe)
-        query.setParameter("id", id)
-        try {
-            return converterDeEntidade(query.singleResult)
-        }catch (e: NoResultException){
-            return null
-        }
-    }
+    fun recuperarPeloId(id: Int) = converterDeEntidade(recuperaEntidadePeloId(id))
 
     fun apagarPeloId(id: Int) {
+        manager.transaction.begin()
+        manager.remove(recuperaEntidadePeloId(id))
+        manager.transaction.commit()
+    }
+
+    fun recuperaEntidadePeloId(id: Int): TEntidade {
         val query = manager.createQuery("FROM ${classe.simpleName} WHERE id=:id", classe)
         query.setParameter("id", id)
-
-        manager.transaction.begin()
-        manager.remove(query.singleResult)
-        manager.transaction.commit()
+        return query.singleResult
     }
 
     fun salvar(item: TModelo) {
