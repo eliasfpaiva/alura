@@ -9,7 +9,7 @@ fun PlanoEntity.paraPlano() : Plano {
 
 fun Plano.paraEntidade() : PlanoEntity {
     return if (this is PlanoAssinatura)
-        PlanoAssinaturaEntity(this.id, this.tipo, this.mesalidade, this.jogosIncluidos, this.percentualDescontoReputacao)
+        PlanoAssinaturaEntity(this.id, this.tipoPlano, this.mensalidade, this.jogosIncluidos, this.percentualDescontoReputacao)
     else
         PlanoPadraoEntity(this.id)
 }

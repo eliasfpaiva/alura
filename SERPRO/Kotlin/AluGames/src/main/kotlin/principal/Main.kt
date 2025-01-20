@@ -1,4 +1,3 @@
 package principal
 
-fun main(){
-}
+fun main() {}
