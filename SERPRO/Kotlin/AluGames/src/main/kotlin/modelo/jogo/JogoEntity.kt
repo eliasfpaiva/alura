@@ -11,11 +11,4 @@ data class JogoEntity(
     val titulo: String = "",
     val capa: String = "",
     val preco: BigDecimal = BigDecimal.ZERO,
-    val descricao: String? = ""){
-
-    fun paraJogo(): Jogo = Jogo(id, titulo, capa, preco, descricao ?: "")
-
-    companion object {
-        fun doJogo(jogo: Jogo): JogoEntity = JogoEntity(id = jogo.id ?: 0, titulo = jogo.titulo, capa = jogo.capa, preco = jogo.preco, descricao = jogo.descricao)
-    }
-}
+    val descricao: String? = "")

@@ -4,7 +4,7 @@ import modelo.aluguel.Aluguel
 import modelo.jogador.Jogador
 import java.math.BigDecimal
 
-sealed class Plano(val tipo: TiposPlano, var id:Int = 0) {
+sealed class Plano(var id: Int = 0, val tipo: TiposPlano) {
 
     open fun obterValor(aluguel: Aluguel): BigDecimal {
         val valor = aluguel.jogo.preco * aluguel.periodo.emDias().toBigDecimal()
@@ -13,6 +13,6 @@ sealed class Plano(val tipo: TiposPlano, var id:Int = 0) {
     abstract fun percentualDesconto(jogador: Jogador): BigDecimal
 
     override fun toString(): String {
-        return "Plano(tipo=$tipo, id=$id)"
+        return "Plano(id=$id, tipo=$tipo)"
     }
 }

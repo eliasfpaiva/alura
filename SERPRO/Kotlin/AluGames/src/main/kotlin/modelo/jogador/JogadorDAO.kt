@@ -1,12 +1,10 @@
 package modelo.jogador
 
-import dados.Banco
 import dados.DAO
 import javax.persistence.EntityManager
 
-object JogadorDAO : DAO<Jogador, JogadorEntity> {
-    override val manager: EntityManager = Banco.getEntityManager()
+class JogadorDAO(override val manager: EntityManager) : DAO<Jogador, JogadorEntity> {
     override val classe = JogadorEntity::class.java
     override fun converterDeEntidade(entidade: JogadorEntity) = entidade.paraJogador()
-    override fun converterEmEntidade(objeto: Jogador) = JogadorEntity.doJogador(objeto)
+    override fun converterEmEntidade(objeto: Jogador)= objeto.paraEntidade()
 }

@@ -4,7 +4,7 @@ import modelo.aluguel.Aluguel
 import modelo.jogador.Jogador
 import java.math.BigDecimal
 
-class PlanoAssinatura(tipo: TiposPlano, val mesalidade: BigDecimal, val jogosIncluidos: Int, val percentualDescontoReputacao: BigDecimal, id:Int = 0): Plano(tipo, id) {
+class PlanoAssinatura(id: Int = 0, tipo: TiposPlano, val mesalidade: BigDecimal, val jogosIncluidos: Int, val percentualDescontoReputacao: BigDecimal): Plano(id, tipo) {
     override fun obterValor(aluguel: Aluguel): BigDecimal {
         val totalJogosNoMes = aluguel.jogador.jogosAlugadosNoMes(aluguel.periodo.inicio).size + 1
 
@@ -13,7 +13,6 @@ class PlanoAssinatura(tipo: TiposPlano, val mesalidade: BigDecimal, val jogosInc
     override fun percentualDesconto(jogador: Jogador): BigDecimal {
         return if(jogador.mediaRecomendacao > BigDecimal("8")) percentualDescontoReputacao else BigDecimal("0.0")
     }
-
     override fun toString(): String {
         return "PlanoAssinatura(mesalidade=$mesalidade, jogosIncluidos=$jogosIncluidos, percentualDescontoReputacao=$percentualDescontoReputacao)"
     }
