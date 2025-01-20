@@ -4,8 +4,8 @@ import java.math.BigDecimal
 import javax.persistence.*
 
 @Entity
-@Inheritance
 @Table(name = "planos")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipoEntidade", discriminatorType = DiscriminatorType.STRING)
 sealed class PlanoEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
