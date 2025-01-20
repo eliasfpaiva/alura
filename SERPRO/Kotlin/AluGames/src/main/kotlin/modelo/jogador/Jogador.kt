@@ -66,8 +66,10 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
         this.idInterno = String.format("$usuario%04d", numero)
     }
 
-    fun alugarJogo(jogo: Jogo, periodo: Periodo) {
-        jogosAlugados.add(Aluguel(this, jogo, periodo))
+    fun alugarJogo(jogo: Jogo, periodo: Periodo): Aluguel {
+        val aluguel = Aluguel(this, jogo, periodo)
+        jogosAlugados.add(aluguel)
+        return aluguel
     }
 
     fun recomendarJogo(jogo: Jogo, nota: Int) {

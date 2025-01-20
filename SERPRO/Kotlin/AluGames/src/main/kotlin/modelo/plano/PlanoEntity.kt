@@ -9,9 +9,9 @@ import javax.persistence.*
 @DiscriminatorColumn(name = "tipoEntidade", discriminatorType = DiscriminatorType.STRING)
 sealed class PlanoEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0,
+    open val id: Int = 0,
     @Enumerated(EnumType.STRING)
-    val tipo: TipoPlano = TipoPlano.BRONZE)
+    open val tipo: TipoPlano = TipoPlano.BRONZE)
 
 @Entity
 @DiscriminatorValue("PADRÃO")
