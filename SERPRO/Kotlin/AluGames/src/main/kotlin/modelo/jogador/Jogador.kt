@@ -89,7 +89,7 @@ data class Jogador(var nome:String, var email:String) : Recomendavel{
                 "Data Nascimento: $dataNascimento\n" +
                 "Usuario: $usuario\n" +
                 "IdInterno: $idInterno\n" +
-                "Reputação: ${mediaRecomendacao.setScale(2)}"
+                "Reputação: ${mediaRecomendacao.setScale(2, RoundingMode.HALF_EVEN)}"
     }
 
     fun removerJogo(leitura: Scanner){
